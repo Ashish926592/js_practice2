@@ -1,0 +1,73 @@
+<!-- 2) numeric2.htm
+	Requirement :
+
+		- Check if the value entered in Text Box is a numeric value or not,
+		i.e., text characters and even null/empty values should not be allowed.
+		- Error message needs to be : In case of empty field - "Please enter any numeric value" and
+		in case of non-numeric value - "Only numeric values are allowed. Please re-enter the value". 
+		Final message - "Entered value is a numeric value".
+		- Provide appropriate focus to the error fields.
+
+	DO NOT USE in-built javascript "isNaN()" function.      MIGHT BE USE REGULAR EXPRESSION -->
+
+    <!-- 1) numeric1.htm
+	Requirement :
+
+		- Check if the value entered in Text Box is a numeric value or not,
+			i.e., text characters and even null/empty values should not be allowed.
+		- Error messages : In case of empty field - "Please enter any numeric value" and
+			in case of non-numeric value - "Only numeric values are allowed. Please re-enter the value".
+			Final message - "Entered value is a numeric value".
+		-PROVIDE APPROPRIATE FOCUS TO THE ERROR FIELDS.
+
+
+	HINT : Use in-built javascript "isNaN()" function. -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Document</title>
+
+</head>
+<body>
+     <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Enter Number:</label>
+    <input type="text" class="form-control" id="one">
+    <button type="button"  class="btn bg-primary" id="btn">submit</button><br>
+    <label for="exampleInputEmail1" class="form-label" id="output"></label>
+
+  </div>
+    <script>
+        $("#btn").click(function(){
+           let str = $("#one").val().trim();
+           let reg1 = /^\s*$/;
+           let reg2 = /^[0-9]+$/;
+            if(reg1.test(str)){
+                $("#output").text("");
+                $("#output").text("text characters and even null/empty values should not be allowed.").attr("class","bg-danger text-white");
+                
+             }
+           else if(!reg2.test(str)){
+            $("#output").text("");
+                $("#output").text("Only numeric values are allowed").attr("class","bg-danger text-white");
+             }
+            
+             else{
+                $("#output").text("");
+                $("#output").text("you are entered valid number").attr("class","bg-success text-white");
+
+             }
+        })
+
+</script>
+</body>
+</html>
