@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <form action="" class="form-inline">
+          <button class="btn btn-success ms-5" onclick="displayCartSummary()" type="button">Cart Summary</button>
+        </form>
+      </nav>
+      <div class="row mt-5" id="products-container">
+      
+      </div>
+    <script>
+
+const products = {
+  products: [
+    {
+      id: 1,
+      image:
+        "https://images.squarespace-cdn.com/content/v1/59d2bea58a02c78793a95114/1604517546555-J765GMQHYO74IFMZ2RWQ/iphone+12.png?format=1000w",
+      name: "iPhone 12",
+      price: "₹50,000",
+    },
+    {
+      id: 2,
+      image:
+        "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MPU03?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1666124678309",
+      name: "iPhone 14 Pro Max",
+      price: "₹1,60,000",
+    },
+    {
+      id: 3,
+      image:
+        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MPP53_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1676922482104",
+      name: "iPhone 12 Pro Max",
+      price: "₹80,000",
+    },
+    {
+      id: 4,
+      image:
+        "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MM1H3?wid=2000&hei=2000&fmt=jpeg&qlt=95&.v=1629962582000",
+      name: "iPhone 13 Pro Max",
+      price: "₹1,10,000",
+    },
+  ],
+};
+
+const productsContainer = document.getElementById("products-container");
+
+for (const product of products.products) {
+  const productDiv = document.createElement("div");
+  productDiv.setAttribute("class", "col-lg-4 col-md-6 col-sm-12");
+
+  productDiv.innerHTML = `
+  <div class="m-5 card">
+  <img
+    src="${product.image}"
+    class="card-img-top img-fluid"
+    alt="..."
+  />
+  <div class="card-body text-center">
+    <h5 class="card-title">${product.name}</h5>
+    <p class="card-text">
+      Price:  <b>${product.price}</b>
+    </p>
+    <a href="#" class="btn btn-primary" onclick="addToCart(${product.id})">Add To Cart</a><br><br>
+  </div>  
+</div>`;
+
+  productsContainer.appendChild(productDiv);
+}
+
+function addToCart(productID) {
+  const product = products.products.find((p) => p.id === productID);
+  console.log(product);
+  var cartItems = {};
+  cartItems.key = product;
+  console.log(cartItems);
+  localStorage.setItem(productID, JSON.stringify(cartItems));
+  alert("Item Added Successfully.");
+}
+
+function displayCartSummary() {
+  console.log("Cart Summary:");
+  for (let i = 0; i < localStorage.length; i++) {
+    var KeyName = window.localStorage.key(i);
+    const cartItems = JSON.parse(localStorage.getItem(KeyName));
+    for(let item in cartItems){
+      console.log(`${cartItems[item].name}-${cartItems[item].price}`);
+    }
+    
+  }
+}
+
+    </script>
+</body>
+</html>
+
+
+
+
