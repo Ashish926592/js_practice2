@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Popup 1</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+	<p>Please click here in order to read our Terms and Conditions</p>
+	<button type="button" id="output123">Read</button>
+
+
+    <script type="text/javascript">
+        $("#output123").click(() => {
+            window.open("popup2.html", "popup2", "top=100,left=100,width=400,height=200,resizable=no,toolbar=no,location=no");
+        });
+    
+</script>
+</body>
+</html>

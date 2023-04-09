@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="d">Enter Date to be validated:
+        </label>
+        <input type="text" name="date" id="d" maxlength="10" placeholder="MM-DD-YYYY">
+        <button onclick="val()">Check</button>
+        <input type="reset" value="Reset">
+
+        <p id="msg"></p>
+    </form>
+</body>
+<script>
+    function val() {
+        let str = document.getElementById("d").value;
+        let m = str.slice(0, 2);
+        let d = str.slice(3, 5);
+        let y = str.slice(6, 10);
+
+        if (m <= 0 || m > 12) {
+            alert("Date is invalid")
+        }
+        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
+            if (d > 31) {
+                alert("Date is invalid");
+            }
+
+        }
+        if (m == 2 || m == 4 || m == 6 || m == 9 || m == 11) {
+            if (d > 30) {
+                alert("Date is invalid");
+            }
+        }
+        if (y % 4 == 0 && (y % 100 != 0) || (y % 400 == 0)) {
+            if (m == 2) {
+                if (d > 29) {
+                    alert("Date is invalid")
+                }
+            }
+        }else
+            if(m==2){
+                if(d>28){
+                    alert("Date is invalid")
+                }
+            }
+            else{
+                alert("Date is valid")
+            }
+        }
+    
+
+</script>
+
+</html>
