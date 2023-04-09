@@ -26,7 +26,7 @@
 
 <body>
     <select class="form-select" aria-label="Default select example">
-        <option>Please select</option>
+        <option value="Select">Please select</option>
         <option value="India">India</option>
         <option value="United Kingdom">United Kingdom</option>
         <option value="USA">USA</option>
@@ -35,10 +35,19 @@
     <div id="output" class="container text-center mt-5 fs-1 bg-dark text-white rounded-3 p-5">You have Selected:</div>
     <script>
         $('select').click(function () {
-            let sel = $('select').val();
+            if($('select').val() == "Select"){
+                $("#output").html(`
+                <ul type="none">
+                    <li>India</li>
+                    <li>United Kingdom</li>
+                    <li>USA</li>
+                    </ul>
+                `);
+            }else{
+                let sel = $('select').val();
             $("#output").html(sel);
+            }
         });
-
     </script>
 </body>
 
